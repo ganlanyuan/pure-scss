@@ -1,7 +1,8 @@
 {
-  "name": "pure",
-  "version": "0.3.1-pre",
+  "name": "pure-scss",
+  "version": "0.3.0",
   "devDependencies": {
     "normalize-scss": "*"
-  }
+  },
+  "homepage": "https://github.com/ajgon/pure-scss"
 }

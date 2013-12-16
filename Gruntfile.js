@@ -124,8 +124,9 @@ grunt.initConfig({
                     '/*!',
                     'Pure v<%= pkg.version %>',
                     'Copyright 2013 Yahoo! Inc. All rights reserved.',
+                    'SASS/SCSS version by Igor Rzegocki',
                     'Licensed under the BSD License.',
-                    'https://github.com/yui/pure/blob/master/LICENSE.md',
+                    'https://github.com/ajgon/pure-scss/blob/master/LICENSE.md',
                     '*/\n'
                 ].join('\n')
             },
