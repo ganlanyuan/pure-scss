@@ -14,7 +14,8 @@ grunt.initConfig({
     clean: {
         build    : ['build/'],
         build_res: ['build/*-r.css'],
-        release  : ['release/<%= pkg.version %>/']
+        release  : ['release/<%= pkg.version %>/'],
+        bower    : ['bower/']
     },
 
     // -- CSSLint Config -------------------------------------------------------
@@ -80,6 +81,12 @@ grunt.initConfig({
             options: {
                 outputStyle: 'nested'
             }
+        },
+        'test-bower': {
+            files: {
+                'build/bower-pure.css': 'bower/pure.scss',
+                'build/bower-pure-nr.css': 'bower/pure-nr.scss'
+            }
         }
     },
 
@@ -87,6 +94,12 @@ grunt.initConfig({
         build: {
             src: ['README.md', 'LICENSE.md', 'bower.json'],
             dest: 'build/',
+            expand: true,
+            flatten: true
+        },
+        bower: {
+            src: ['src/*/scss/*.scss', 'README.md', 'LICENSE.md', 'bower.json'],
+            dest: 'bower',
             expand: true,
             flatten: true
         }
@@ -164,6 +177,8 @@ grunt.registerTask('import', ['bower_install']);
 grunt.registerTask('test', ['csslint']);
 grunt.registerTask('sass-build', ['sass:responsive', 'sass:nonresponsive', 'sass:responsive-min', 'sass:nonresponsive-min']);
 grunt.registerTask('build', ['clean:build', 'sass-build', 'license', 'copy:build']);
+
+grunt.registerTask('bower', ['clean:bower', 'copy:bower']);
 
 grunt.registerTask('release', [
     'default',
