@@ -83,6 +83,15 @@ grunt.initConfig({
         }
     },
 
+    copy: {
+        build: {
+            src: ['README.md', 'LICENSE.md', 'bower.json'],
+            dest: 'build/',
+            expand: true,
+            flatten: true
+        }
+    },
+
     compress: {
         release: {
             options: {
@@ -143,6 +152,7 @@ grunt.initConfig({
 // npm tasks.
 grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-contrib-csslint');
+grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-compress');
 grunt.loadNpmTasks('grunt-sass');
 
@@ -153,7 +163,7 @@ grunt.registerTask('default', ['import', 'test', 'build']);
 grunt.registerTask('import', ['bower_install']);
 grunt.registerTask('test', ['csslint']);
 grunt.registerTask('sass-build', ['sass:responsive', 'sass:nonresponsive', 'sass:responsive-min', 'sass:nonresponsive-min']);
-grunt.registerTask('build', ['clean:build', 'sass-build', 'license']);
+grunt.registerTask('build', ['clean:build', 'sass-build', 'license', 'copy:build']);
 
 grunt.registerTask('release', [
     'default',
